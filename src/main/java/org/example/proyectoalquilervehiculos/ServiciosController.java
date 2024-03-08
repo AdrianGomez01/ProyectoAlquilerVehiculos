@@ -17,6 +17,12 @@ public class ServiciosController {
     @GetMapping("/servicios/")
     public List<Servicios> allServices(){return serviciosRepository.findAll();}
 
+    @GetMapping("/servicios/terminados")
+    public List<Servicios> allEndedServices(){return serviciosRepository.findAll();}//TODO
+
+    @GetMapping("/servicios/conductor")
+    public List<Servicios> ServicesByConductor(){return serviciosRepository.conductoresEnServicio() ;}
+
 
 
 }
