@@ -5,10 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
-public interface VehiculoRepository extends JpaRepository<Vehiculo, Integer> {
+public interface ServiciosRepository extends JpaRepository<Servicios, Integer> {
 
-    List<Vehiculo> findByTipo(String tipo);
-
-    Vehiculo findByMatricula(String matricula);
+    List<Servicios> allServices();
 }
