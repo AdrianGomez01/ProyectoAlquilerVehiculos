@@ -16,19 +16,23 @@ public class VehiculoController {
 
     @PostMapping
     public ResponseEntity<Vehiculo> agregarVehiculo(@RequestBody Vehiculo vehiculo) {
-        Vehiculo nuevoVehiculo = vehiculoRepository.agregarVehiculo(vehiculo);
+        Vehiculo nuevoVehiculo = vehiculoRepository.save(vehiculo);
         return new ResponseEntity<>(nuevoVehiculo, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Vehiculo> actualizarVehiculo(@PathVariable("id") int id, @RequestBody Vehiculo vehiculo) {
-        Vehiculo vehiculoActualizado = vehiculoRepository.actualizarVehiculo(id, vehiculo);
+        if (!vehiculoRepository.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        vehiculo.setIdVehiculo(id);
+        Vehiculo vehiculoActualizado = vehiculoRepository.save(vehiculo);
         return new ResponseEntity<>(vehiculoActualizado, HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity<List<Vehiculo>> obtenerTodosLosVehiculos() {
-        List<Vehiculo> vehiculos = vehiculoRepository.obtenerTodosLosVehiculos();
+        List<Vehiculo> vehiculos = vehiculoRepository.findAll();
         return new ResponseEntity<>(vehiculos, HttpStatus.OK);
     }
 
