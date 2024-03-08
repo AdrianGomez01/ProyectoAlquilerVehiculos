@@ -1,4 +1,4 @@
-INSERT INTO vehiculos (marca, modelo, tipo, matricula, kilometrajecoche) VALUES
+INSERT INTO VEHICULO (marca, modelo, tipo, matricula, kilometraje_coche) VALUES
 ('Toyota', 'Corolla', 'Sedán', 'ABC123', 15000),
 ('Honda', 'Civic', 'Sedán', 'DEF456', 20000),
 ('Ford', 'Focus', 'Hatchback', 'GHI789', 18000),
