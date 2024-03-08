@@ -1,34 +1,13 @@
 package org.example.proyectoalquilervehiculos;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
-public class ServiciosRepository {
+public interface ServiciosRepository extends JpaRepository<Servicios, Integer> {
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    public void agregarKilometros(int servicioId, int kilometros) {
-        String sql = "UPDATE servicios SET kilometrajeServicio = kilometrajeServicio + ? WHERE idServicio = ?";
-        jdbcTemplate.update(sql, kilometros, servicioId);
-    }
-
-    public List<Conductor> conductoresEnServicio() {
-        String sql = "SELECT c.* FROM servicios s JOIN conductores c ON s.idConductor = c.idConductor WHERE s.finalizado = 0";
-        return jdbcTemplate.query(sql, new ConductorRowMapper());
-    }
-
-    public void registrarServicioTerminado(int servicioId) {
-        String sql = "UPDATE servicios SET finalizado = 1 WHERE idServicio = ?";
-        jdbcTemplate.update(sql, servicioId);
-    }
-
-    public List<Servicios> findAll() {
-
-        return null;
-    }
+    List<Servicios> allServices();
 }
