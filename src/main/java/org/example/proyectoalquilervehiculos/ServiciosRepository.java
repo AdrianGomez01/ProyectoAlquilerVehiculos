@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
-public class ServicioRepository {
+public class ServiciosRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -28,4 +27,8 @@ public class ServicioRepository {
         jdbcTemplate.update(sql, servicioId);
     }
 
+    public List<Servicios> findAll() {
+
+        return null;
+    }
 }
