@@ -9,5 +9,13 @@ import java.util.List;
 @Repository
 public interface ServiciosRepository extends JpaRepository<Servicios, Integer> {
 
-    List<Servicios> allServices();
+    List<Servicios> findAll();
+
+    List<Servicios> findByEstado(String estado);
+
+
+    List<Servicios> findByConductor(String conductor);
+
+
+
 }
